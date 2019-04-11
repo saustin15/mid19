@@ -1,3 +1,5 @@
+//https://github.com/saustin15/mid19
+//
 //Modified by Spencer Austin
 //April 11. 2019
 //Author: Gordon Griesel
@@ -5,9 +7,11 @@
 //Framework for coding exam
 
 
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+//#define UNIT_TESTING
 
 //type defines
 typedef double Flt;
@@ -295,6 +299,38 @@ const Flt arr[] = {
 
 int main(int argc, char *argv[])
 {
+    
+#ifdef UNIT_TESTING
+    //Program to calculate vector normalization and length.
+    //
+    printf("./mid19                                    \n\n");
+    printf("                                    \n\n");
+    printf("                                    \n\n");
+    printf("3350 software engineering           \n\n");
+    printf("                                    \n\n");
+    printf("Unit test of vec_length() function:      \n\n");
+    printf("tolerance: 0.01                                   \n\n");
+    printf("     x         y         length         actual   \n");
+    printf("     --------  --------  ----------   --------- \n");
+    //read until sentinel found.
+     
+    int j = 0;
+    Vec v = { data[j], data[j+1]};
+   
+    do {
+        Flt ret = vec_length(v);
+        printf("%3i  %8.5lf  %8.5lf  %10.5lf  %10.5lf\n", j+1, v[0], v[1],ret,ret);
+        
+        ++j;
+        v[0] =data[j];
+        v[1] = data[j+1];
+    } while (!(v[0]==0.0 && v[1]==0.0));
+    //
+    printf("\nProgram complete.\n\n");
+    return 0;
+}
+#endif
+
     //Program to calculate vector normalization and length.
     //
     printf("                                    \n");
@@ -305,6 +341,7 @@ int main(int argc, char *argv[])
     printf("     x         y         length     \n");
     printf("     --------  --------  ---------- \n");
     //read until sentinel found.
+
     int i=0;
     Vec v = { arr[i*2+0], arr[i*2+1] };
     do {
@@ -349,5 +386,4 @@ Flt vec_length(Vec v)
     v[1] *= oolen;
     return len;
 }
-
 
